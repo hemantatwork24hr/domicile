@@ -23,20 +23,16 @@ class RoomsController < ApplicationController
 	def create
 		#render plain: params[:room].inspect
 		#skip_before_action :verify_authenticity_token
+
 		@room = Room.new( room_params )
 		
 		respond_to do |format|
 			if @room.save
-				
-				puts( "hemant" )
-				binding.pry
 				# redirect_to @room
 				#format.html{ redirect_to @room, notice: 'Room was successfully created'}
 				#format.json{ rendor json: @room, status: 'created', location: @room }
 				#format.js
 			else
-				puts( "gajbe" )
-				binding.pry
 				format.html { render 'new' }
 			end
 		end
