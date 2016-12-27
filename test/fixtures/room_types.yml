@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyText
+  capacity: MyString
+  cost: MyString
+  a_c_cost: MyString
+
+two:
+  name: MyText
+  capacity: MyString
+  cost: MyString
+  a_c_cost: MyString
