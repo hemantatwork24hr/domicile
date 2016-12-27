@@ -1,0 +1,100 @@
+<%= form_for @room, :html =>{:id=>"create_room",:multipart => true,:remote=>true} do |f| %>
+	<% if @room.errors.any? %>
+		<div id="error_explanation">
+			<h2>
+			<%= pluralize(@room.errors.count, "error")%>prohibited this room from being saved:
+			</h2>
+			<ul>
+				<% @room.errors.full_messages.each do |msg| %>
+					<li><%=msg %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+
+	<div class="container-fluid">
+	<div class="form-group row">
+		<div class="col-sm-4">
+			<label for="name"><%= f.label :name %></label>
+		</div>
+		<div class="col-sm-8">
+			<%= f.text_field :name, :class => "form-control" %>
+		</div>
+	</div>
+
+	<div class="form-group row">
+		<div class="col-sm-4">
+			<label for="type"><%= f.label :type %> </label>
+		</div>
+		<div class="col-sm-8">
+			<%= f.text_field :type, :class => "form-control" %>
+		</div>
+	</div>
+
+	<div class="form-group row">
+		<div class="col-sm-4">
+			<label for="price"><%= f.label :price %></label>
+		</div>
+		<div class="col-sm-8">
+			<%= f.text_field :price, :class => "form-control" %>
+		</div>
+	</div>
+
+	<div class="form-group row">
+		<div class="col-sm-4">
+			<label for="num_beds"><%= f.label :num_beds %></label>
+		</div>
+		<div class="col-sm-8">
+			<%= f.text_field :num_beds, :class => "form-control" %>
+		</div>
+	</div>
+
+	<div class="form-group row">
+		<div class="col-sm-4">
+			<label for="availability"><%= f.label :availability %></label>
+		</div>
+		<div class="col-sm-8">
+			<%= f.text_field :availability, :class => "form-control" %>
+		</div>
+	</div>
+
+	<div class="form-group row">
+		<div class="col-sm-4">
+			<label for="room_floor"><%= f.label :room_floor %></label>
+		</div>
+		<div class="col-sm-8">
+			<%= f.text_field :room_floor, :class => "form-control" %>
+		</div>
+	</div>
+
+	<div class="form-group row">
+		<div class="col-sm-4">
+			<label for="room_number"><%= f.label :room_number %></label>
+		</div>
+		<div class="col-sm-8">
+			<%= f.text_field :room_number, :class => "form-control" %>
+		</div>
+	</div>
+
+	<div class="form-group row">
+		<div class="col-sm-4">
+			<label for="description"><%= f.label :description %></label>
+		</div>
+		<div class="col-sm-8">	
+			<%= f.text_field :description, :class => "form-control" %>
+		</div>
+	</div>
+
+	<div class="form-group row">
+		<div class="col-sm-6">
+			<%= f.submit :class => "btn btn-info", :id => "create_room" %>
+		</div>
+		<div class="col-sm-6">
+			<%= link_to 'Back', rooms_path , :class => "btn btn-danger" %>
+		</div>
+		<div class="col-sm-6">
+		</div>
+	</div>
+
+</div>
+<% end %>
