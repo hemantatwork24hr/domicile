@@ -5,6 +5,7 @@ class RoomsController < ApplicationController
 
 		respond_to do |format|
 			format.html
+			format.js
 		end
 	end
 
@@ -14,10 +15,20 @@ class RoomsController < ApplicationController
 
 	def new
 		@room = Room.new
+
+		respond_to do |format|
+			format.html
+			format.js
+		end
 	end
 
 	def edit
 		@room = Room.find(params[:id])
+
+		respond_to do |format|
+			format.html
+			format.js
+		end
 	end
 
 	def create
@@ -28,15 +39,14 @@ class RoomsController < ApplicationController
 		
 		respond_to do |format|
 			if @room.save
-				# redirect_to @room
-				#format.html{ redirect_to @room, notice: 'Room was successfully created'}
-				#format.json{ rendor json: @room, status: 'created', location: @room }
+				format.html{ redirect_to @room, notice: 'Room was successfully created'}
 				#format.js
 			else
-				format.html { render 'new' }
+				format.html { render partial: 'new' }
+				format.js
+				#format.json { render json: @room.errors, status: :unprocessable_entity }
 			end
 		end
-		#binding.pry
 	end
 
 	def update
