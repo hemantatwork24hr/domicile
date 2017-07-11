@@ -19,8 +19,9 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li><%= link_to "Rooms", rooms_path, remote: true, id:'list_rooms' %></li>
-        <li><a href="#" class="menu_bar" id="bookings">Bookings</a></li>
-        <li><a href="#" class="menu_bar" id="food_orders">Food orders</a></li>
+        <li><%= link_to "Room types", room_types_path, remote: true, id:'list_room_types' %></li>
+        <li><%= link_to "Bookings", bookings_path, remote: true, id:'list_bookings'%></li>
+        <li><%= link_to "Customers", customers_path, remote: true, id:'list_customers' %>"</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
@@ -31,7 +32,6 @@
   
 <div class="container-fluid text-center">    
   <div class="row content">
-    <h1 id="test">Welcome to domicile</h1>
     <div class="col-sm-12 text-left"> 
       <hr>
       <div id="result_div"></div>

@@ -1,0 +1,30 @@
+<div class="well">
+  <div class="well"><h1>Listing customers</h1></div>
+  <div class="well">
+  <%= link_to "Create customer", new_customer_path, remote: true, id:'list_rooms', 
+  class:'btn btn-info btn-lg' %>
+  </div>
+  <div class="well">
+    <table class="table table-bordered">
+        <tr>
+          <th>Name</th>
+          <th>Phone</th>
+          <th>Email</th>
+          <th>Adhaar</th>
+          <th colspan="3">Actions</th>
+        </tr>
+        <% @customers.each do |customer| %>
+          <tr>
+            <td><%= customer.name %></td>
+            <td><%= customer.phone %></td>
+            <td><%= customer.email %></td>
+            <td><%= customer.adhaar_id %></td>
+            <td><%= link_to 'Show', customer %></td>
+            <td><%= link_to 'Edit', edit_customer_path(customer) , :class => "glyphicon glyphicon-pencil", remote:true %></td>
+            <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' },
+            remote:true %></td>
+          </tr>
+        <% end %>
+    </table>
+  </div>
+</div>

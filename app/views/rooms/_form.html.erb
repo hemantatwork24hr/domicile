@@ -14,89 +14,53 @@
 		<% end %>
 
 		<div class="container-fluid">
-		<div class="form-group row">
-			<div class="col-sm-4">
-				<label for="name"><%= f.label :name %></label>
+			<div class="form-group row">
+				<div class="col-sm-4">
+					<%= f.label :room_number %>
+				</div>
+				<div class="col-sm-8">
+					<%= f.text_field :room_number, :class => "form-control" %>
+				</div>
 			</div>
-			<div class="col-sm-8">
-				<%= f.text_field :name, :class => "form-control" %>
+
+			<div class="form-group row">
+				<div class="col-sm-4">
+					<%= f.label :type %>
+				</div>
+				<div class="col-sm-8">
+					<%= collection_select(:room, :room_type_id, RoomType.all, :id, :name) %>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<div class="col-sm-4">
+					<%= f.label :availability %>
+				</div>
+				<div class="col-sm-8">
+	    			<%= f.radio_button :availability, 'true' %>Yes
+	    			<%= f.radio_button :availability, 'false' %>No<br />
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<div class="col-sm-4">
+					<%= f.label :room_floor %>
+				</div>
+				<div class="col-sm-8">
+					<%= f.text_field :room_floor, :class => "form-control" %>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<div class="col-sm-6">
+					<%= f.submit :class => "btn btn-info", :id => "create_room" %>
+				</div>
+				<div class="col-sm-6">
+					<%= link_to 'Back', rooms_path , :class => "btn btn-danger", remote: true %>
+				</div>
+				<div class="col-sm-6">
+				</div>
 			</div>
 		</div>
-
-		<div class="form-group row">
-			<div class="col-sm-4">
-				<label for="type"><%= f.label :type %> </label>
-			</div>
-			<div class="col-sm-8">
-				<%= f.text_field :type, :class => "form-control" %>
-			</div>
-		</div>
-
-		<div class="form-group row">
-			<div class="col-sm-4">
-				<label for="price"><%= f.label :price %></label>
-			</div>
-			<div class="col-sm-8">
-				<%= f.text_field :price, :class => "form-control" %>
-			</div>
-		</div>
-
-		<div class="form-group row">
-			<div class="col-sm-4">
-				<label for="num_beds"><%= f.label :num_beds %></label>
-			</div>
-			<div class="col-sm-8">
-				<%= f.text_field :num_beds, :class => "form-control" %>
-			</div>
-		</div>
-
-		<div class="form-group row">
-			<div class="col-sm-4">
-				<label for="availability"><%= f.label :availability %></label>
-			</div>
-			<div class="col-sm-8">
-				<%= f.text_field :availability, :class => "form-control" %>
-			</div>
-		</div>
-
-		<div class="form-group row">
-			<div class="col-sm-4">
-				<label for="room_floor"><%= f.label :room_floor %></label>
-			</div>
-			<div class="col-sm-8">
-				<%= f.text_field :room_floor, :class => "form-control" %>
-			</div>
-		</div>
-
-		<div class="form-group row">
-			<div class="col-sm-4">
-				<label for="room_number"><%= f.label :room_number %></label>
-			</div>
-			<div class="col-sm-8">
-				<%= f.text_field :room_number, :class => "form-control" %>
-			</div>
-		</div>
-
-		<div class="form-group row">
-			<div class="col-sm-4">
-				<label for="description"><%= f.label :description %></label>
-			</div>
-			<div class="col-sm-8">	
-				<%= f.text_field :description, :class => "form-control" %>
-			</div>
-		</div>
-
-		<div class="form-group row">
-			<div class="col-sm-6">
-				<%= f.submit :class => "btn btn-info", :id => "create_room" %>
-			</div>
-			<div class="col-sm-6">
-				<%= link_to 'Back', rooms_path , :class => "btn btn-danger", remote: true %>
-			</div>
-			<div class="col-sm-6">
-			</div>
-		</div>
-
-	</div>
 	<% end %>
 </div>

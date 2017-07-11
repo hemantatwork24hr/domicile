@@ -2,28 +2,60 @@ class RoomTypesController < ApplicationController
 
 	def index
 
+		@roomTypes = RoomType.all
+
+		respond_to do |format|
+			format.html
+			format.js
+		end
 	end
 
-	def new
-		@counts = { "choose one" => "", "single" => "1", "double" => "2", "triple" => "3", "family" => "3" }		
-		@roomType = RoomType.new		
+	def new		
+		@roomType = RoomType.new
+
+		respond_to do |format|
+			format.html
+			format.js
+		end
 	end
 
 	def create
-		@counts = { "choose one" => "", "single" => "1", "double" => "2", "triple" => "3", "family" => "3" }
+		
 		@roomType = RoomType.new( room_type_params )
 
 		if @roomType.save
-			redirect_to @roomType
+			self.index
 		else
-			render 'new'
+			respond_to do |format|
+				format.html{ render partial: 'new' }
+				format.js
+			end	
 		end
+	end
 
-		#binding.pry
+	def edit
+
+		@roomType = RoomType.find( params[:id] )
+
+		respond_to do |format|
+			format.html
+			format.js
+		end
+	end
+
+	def update
+
+		@roomType = RoomType.find( params[:id])
+
+		if @roomType.update( room_type_params )
+			self.index
+		else
+			render 'edit'
+		end
 	end
 
 	private 
 		def room_type_params
-			params.require(:room_type).permit(:name, :capacity, :cost, :a_c_cost)
+			params.require(:room_type).permit(:name, :price, :number_of_beds, :ac, :description)
 		end
 end

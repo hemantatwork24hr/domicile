@@ -1,8 +1,17 @@
 Rails.application.routes.draw do
   
-  resources :rooms
+  resources :customers
+  resources :rooms do
+      collection do
+        get  :search
+        post  :new_search
+        get  :show_search
+      end
+
+  end 
   resources :room_types
-  
+  resources :bookings
+
   get 'welcome/index'
 
   root 'welcome#index'

@@ -1,7 +1,8 @@
 class RoomsController < ApplicationController
 	
 	def index
-		@rooms = Room.all
+		@rooms 		= Room.all
+		@roomTypes 	= RoomType.all
 
 		respond_to do |format|
 			format.html
@@ -11,6 +12,11 @@ class RoomsController < ApplicationController
 
 	def show
 		@room = Room.find(params[:id])
+
+		respond_to do |format|
+			format.html
+			format.js
+		end
 	end
 
 	def new
@@ -32,42 +38,54 @@ class RoomsController < ApplicationController
 	end
 
 	def create
-		#render plain: params[:room].inspect
-		#skip_before_action :verify_authenticity_token
 
 		@room = Room.new( room_params )
-		
-		respond_to do |format|
-			if @room.save
-				format.html{ redirect_to @room, notice: 'Room was successfully created'}
-				#format.js
-			else
+
+		if @room.save
+			self.index
+		else
+			respond_to do |format|
 				format.html { render partial: 'new' }
 				format.js
-				#format.json { render json: @room.errors, status: :unprocessable_entity }
 			end
 		end
+
 	end
 
 	def update
-		@room = Room.find(params[:id])
 
-		if @room.update(room_params)
-			redirect_to @room
+		@room = Room.find( params[:id] )
+
+		if @room.update( room_params )
+			self.index
 		else
 			render 'edit'
 		end
+
 	end
 
 	def destroy
 		@room = Room.find(params[:id])
 		@room.destroy
 
-		redirect_to rooms_path
+		self.index
 	end
+
+  	def search
+
+    	@room_type_ids = params[:room_type_ids]
+    	
+    	@rooms = Room.where( :room_type_id =>{ "$in" => @room_type_ids } )
+    	
+    	respond_to do |format|
+    		format.html { render partial: 'search'  }
+		end
+
+  	end
 
 	private 
 		def room_params
-			params.require(:room).permit(:name, :price, :type, :num_beds, :availability, :room_floor, :room_number, :description )
+			params.require(:room).permit( :room_number, :room_type_id, :availability, :room_floor )
 		end
+		
 end
