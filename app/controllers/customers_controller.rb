@@ -34,16 +34,18 @@ class CustomersController < ApplicationController
   end
 
   def create
+
     @customer = Customer.new( customer_params )
 
-      if @customer.save
+    if @customer.save
         self.index
-      else
-        respond_to do |format|
-            format.html
-            format.js
-        end
+    else
+      respond_to do |format|
+          format.html
+          format.js
       end
+    end
+
   end
 
   def update
