@@ -19,9 +19,12 @@
             <td><%= customer.phone %></td>
             <td><%= customer.email %></td>
             <td><%= customer.adhaar_id %></td>
-            <td><%= link_to 'Show', customer %></td>
-            <td><%= link_to 'Edit', edit_customer_path(customer) , :class => "glyphicon glyphicon-pencil", remote:true %></td>
-            <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' },
+            <td>
+              <%= link_to 'Show', customer_path( customer ), :class => "glyphicon glyphicon-info-sign", :data => {:toggle => 'modal', :target =>"#myModal"}, :remote => true %></td>
+            <td>
+              <%= link_to 'Edit', edit_customer_path(customer) , :class => "glyphicon glyphicon-pencil", remote:true %></td>
+            <td>
+              <%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' },
             remote:true %></td>
           </tr>
         <% end %>
