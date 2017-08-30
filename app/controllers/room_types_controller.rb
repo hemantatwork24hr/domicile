@@ -54,6 +54,16 @@ class RoomTypesController < ApplicationController
 		end
 	end
 
+	def show
+
+		@roomType = RoomType.find( params[:id] )
+
+		respond_to do |format|
+			format.html
+			format.js
+		end
+	end
+
 	private 
 		def room_type_params
 			params.require(:room_type).permit(:name, :price, :number_of_beds, :ac, :description)

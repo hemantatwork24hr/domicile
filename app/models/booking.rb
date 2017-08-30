@@ -1,4 +1,5 @@
 class Booking
+
   include Mongoid::Document
   field :check_in, type: Date
   field :check_out, type: Date
