@@ -11,6 +11,7 @@ $(".chk_room_type").on('click', function() {
         data: {room_type_ids: room_type_ids},
         //dataType: 'json',
         success: function( response ) {
+
           $("#display_rooms").html( response );
         }
     });

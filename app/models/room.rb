@@ -13,6 +13,6 @@ class Room
 
   belongs_to :room_type
 
-  has_many 	:bookings
+  #embedded_in :bookings
   has_many  :customers
 end

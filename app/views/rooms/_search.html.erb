@@ -1,4 +1,4 @@
 <% @rooms.each do |room| %>
-	 <input type="checkbox" name="customer[room_ids][]" value="<%=room.id %>" class="chk_room">
+	 <input type="checkbox" name="booking[room_ids][]" value="<%=room.id %>" class="chk_room">
 	 <label for="<%=room.room_number %>"><%=room.room_number %></label>
 <% end%>

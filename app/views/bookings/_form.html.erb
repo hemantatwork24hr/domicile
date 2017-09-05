@@ -1,6 +1,18 @@
 <div class="well">
 <%= form_for @booking, :html => {:id => "book_a_room", :multipart => true, :remote => true } do |f|%>
 
+    <% if @booking.errors.any? %>
+        <div id="error_explanation">
+          <h2>
+          <%= pluralize( @booking.errors.count, "error" )%> Prohibited this booking from saved:
+          </h2>
+          <ul>
+            <% @booking.errors.full_messages.each do |msg|%>
+              <li><%=msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end%>
     <div class="container-fluid">
         <div class="form-group row">
           <div class="col-sm-4">
@@ -60,7 +72,7 @@
               <%= f.label :select_customer %>
             </div>
             <div class="col-sm-4">
-               <%= collection_select(:customer, :customer_id, Customer.all, :id, :name ) %>
+               <%= collection_select(:booking, :customer_id, Customer.all, :id, :name ) %>
             </div>
             <div class="col-sm-4">
               <%= link_to "Create customer", new_customer_path, remote: true, id:'list_rooms', class:'btn btn-info btn-md' %>

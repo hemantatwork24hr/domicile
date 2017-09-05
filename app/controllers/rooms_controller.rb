@@ -76,10 +76,11 @@ class RoomsController < ApplicationController
     	@room_type_ids = params[:room_type_ids]
     	
     	@rooms = Room.where( :room_type_id =>{ "$in" => @room_type_ids } )
-    	
+
     	respond_to do |format|
     		format.html { render partial: 'search'  }
 		end
+
 
   	end
 
