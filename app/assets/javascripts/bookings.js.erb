@@ -3,7 +3,7 @@ $(".chk_room_type").on('click', function() {
     room_type_ids = [];
 
   $("input:checkbox[name='booking[room_type_ids][]']:checked").each(function(){
-    room_type_ids.push($(this).val());
+      room_type_ids.push($(this).val());    
   });
 
   $.ajax({
@@ -14,8 +14,8 @@ $(".chk_room_type").on('click', function() {
 
           $("#display_rooms").html( response );
         }
-    });
   });
+});
 
 $('.datepicker').datepicker()
 $(document).on("focus", "[data-behaviour~='datepicker']", function(e){

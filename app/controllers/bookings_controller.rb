@@ -2,13 +2,20 @@ class BookingsController < ApplicationController
 
 	def index
 
+		@bookings = Booking.all
+		@rooms = Room.all
+		@customers = Customer.all
+
+		respond_to do |format|
+			format.html
+			format.js
+		end
 	end
 
 	def create
-
-		@booking = Booking.new( booking_params )
 		
-		binding.pry
+		@booking = Booking.new( booking_params )
+
 		if @booking.save
 			self.index
 		else 
@@ -30,9 +37,39 @@ class BookingsController < ApplicationController
 
 	end
 
+	def edit
+		@booking = Booking.find( params[:id] )
+
+		respond_to do |format|
+			format.html
+			format.js
+		end
+	end
+
+	def update 
+
+		@booking = Booking.find( parms[:id] )
+
+		if @booking.update
+			self.index
+		else
+			render 'edit'
+		end
+	end
+
+	def destroy
+
+		@booking = Booking.find( params[:id] )
+
+		@booking.destroy
+
+		self.index
+
+	end
+
 	private
 
 		def booking_params
-			params.require(:booking).permit( :check_in, :check_out, :adults, :children, :room_id, :customer_id )
+			params.require(:booking).permit( :check_in, :check_out, :adults, :children, :customer_id, :room_ids => [], :room_type_ids => [] )
 		end
 end

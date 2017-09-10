@@ -54,7 +54,7 @@
             <%= f.label :room_type%>
           </div>
           <div class="col-sm-8">
-            <%= f.collection_check_boxes( :room_type_ids, RoomType.all, :id, :name, {}, {:class => 'chk_room_type'} ) %>
+            <%= f.collection_check_boxes( :room_type_ids,RoomType.all,:id,:name,{:include_hidden => false,},{:class => 'chk_room_type'}) %>
           </div>
         </div>
 
