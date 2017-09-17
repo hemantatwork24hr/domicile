@@ -2,9 +2,9 @@ class BookingsController < ApplicationController
 
 	def index
 
-		@bookings = Booking.all
-		@rooms = Room.all
-		@customers = Customer.all
+		@bookings 	= Booking.all
+		@rooms 		= Room.all
+		@customers 	= Customer.all
 
 		respond_to do |format|
 			format.html
@@ -15,7 +15,7 @@ class BookingsController < ApplicationController
 	def create
 		
 		@booking = Booking.new( booking_params )
-
+		binding.pry
 		if @booking.save
 			self.index
 		else 

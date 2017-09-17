@@ -12,7 +12,6 @@ class Room
   validates :room_floor, numericality: { only_integer: true, allow_nil: false }
 
   belongs_to :room_type
-  belongs_to :booking
 
   has_many  :customers
 end

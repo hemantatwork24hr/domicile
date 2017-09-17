@@ -49,21 +49,29 @@
           </div>
 
         </div>
-        <div class="form-group row">
-          <div class="col-sm-4">
-            <%= f.label :room_type%>
-          </div>
-          <div class="col-sm-8">
-            <%= f.collection_check_boxes( :room_type_ids,RoomType.all,:id,:name,{:include_hidden => false,},{:class => 'chk_room_type'}) %>
-          </div>
-        </div>
 
         <div class="form-group row">
-          <div class="col-sm-4">
-            <%= f.label :room %>
-          </div>
-          <div class="col-sm-8" id="display_rooms">
-           
+          <div class="table-responsive">
+            <table class="table-bordered table">
+               <thead>
+                  <tr>
+                    <th class="col-md-1"></th>
+                    <th class="col-md-3">Room types</th>
+                    <th class="col-md-8">Rooms</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                 <%= f.collection_check_boxes( :room_type_ids,RoomType.all,:id,:name,{:include_hidden => false,},{:class => 'chk_room_type'}) do |b| %>
+                  <tr>
+                    <!-- <tr><%= b.check_box %><%= b.label %></tr> -->
+                    <%= content_tag( :td, b.check_box, class: "checkbox-wrap" )%>
+                    <%= content_tag( :td, b.label, class: "label-wrap" )%>
+                    <%= content_tag( :td, nil, class: "room_name", id: "room_" + b.value ) %>
+                  </tr>
+                <% end %>
+                </tbody>
+            </table>
           </div>
         </div>
 

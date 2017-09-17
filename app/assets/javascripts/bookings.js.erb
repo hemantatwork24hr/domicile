@@ -1,6 +1,8 @@
+/*
+Search for multiple room_type_ids
 $(".chk_room_type").on('click', function() {
 
-    room_type_ids = [];
+  room_type_ids = [];
 
   $("input:checkbox[name='booking[room_type_ids][]']:checked").each(function(){
       room_type_ids.push($(this).val());    
@@ -15,6 +17,26 @@ $(".chk_room_type").on('click', function() {
           $("#display_rooms").html( response );
         }
   });
+});*/
+
+$(".chk_room_type").on('click', function() {
+
+  room_type_id = $(this).val();
+
+  if( true === $(this).is(':checked') ) {
+
+    $.ajax({
+          url: '/rooms/search_by_room_type_id',
+          data: {room_type_id: room_type_id},
+          //dataType: 'json',
+          success: function( response ) {
+            $("#room_"+ room_type_id ).html( response );
+          }
+    });
+  } else {
+    $("#room_"+ room_type_id ).html('');
+  }
+
 });
 
 $('.datepicker').datepicker()

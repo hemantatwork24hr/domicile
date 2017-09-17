@@ -81,8 +81,19 @@ class RoomsController < ApplicationController
     		format.html { render partial: 'search'  }
 		end
 
-
   	end
+
+  	def search_by_room_type_id
+
+  		@room_type_id = params[:room_type_id]
+
+  		@rooms = Room.where( :room_type_id => @room_type_id )
+
+  		respond_to do |format|
+  			format.html { render partial: 'search' }
+		end
+
+	end
 
 	private 
 		def room_params

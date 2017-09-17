@@ -6,6 +6,7 @@ Rails.application.routes.draw do
         get  :search
         post  :new_search
         get  :show_search
+        get  :search_by_room_type_id
       end
 
   end 
