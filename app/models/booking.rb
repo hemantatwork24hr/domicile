@@ -9,14 +9,18 @@ class Booking
   field :room_ids, type: Array, default: []
   field :room_type_ids, type: Array, default: []
   field :customer_id, type: Integer
+  field :count, type: String
 
   validates :check_in, presence: true
   validates :check_out, presence: true
   validates :adults, presence: true, numericality: { only_integer: true, allow_nil: false }
   validates :children, presence: true, numericality: { only_integer: true, allow_nil: false }
 
-  belongs_to :customer
-
+  belongs_to  :customer
+  
   has_and_belongs_to_many :rooms
   has_and_belongs_to_many :room_types
+
+  # accepts_nested_attributes_for :rooms
+
 end

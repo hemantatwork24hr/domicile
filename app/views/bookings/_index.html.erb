@@ -41,7 +41,7 @@
             <%= link_to 'Destroy', booking, method: :delete, data: { confirm: 'Are you sure?' }, remote:true %>
           </td>
           <td>
-            <%= link_to 'Generate bill' %>
+            <%= link_to 'Generate bill', edit_billing_path( booking.id ), remote: true %>
           </td>
       </tr>
     <% end %>

@@ -15,7 +15,33 @@ class BookingsController < ApplicationController
 	def create
 		
 		@booking = Booking.new( booking_params )
-		binding.pry
+		
+		@room_ids 	   = booking_params["room_ids"].map(&:to_s)
+		@room_type_ids = booking_params["room_type_ids"]
+
+		@rooms 	    = Room.all
+		@room_types = RoomType.all
+
+		@relations 	 = Hash.new{|hsh,key| hsh[key] = [] }
+		@room_counts = Hash.new
+
+
+		@rooms.each do |room|
+			
+			room_id = room.id.to_s
+			puts room.room_type_id
+			if @room_ids.include?(room_id)
+				@relations[room.room_type_id].push(room.id)
+			end
+			
+		end
+
+		@relations.each do |key,values|
+			@room_counts[key] = values.count
+		end
+
+		@booking.count = @room_counts
+
 		if @booking.save
 			self.index
 		else 
@@ -24,6 +50,7 @@ class BookingsController < ApplicationController
 				format.js
 			end
 		end	
+
 	end
 
 	def new 
@@ -48,7 +75,7 @@ class BookingsController < ApplicationController
 
 	def update 
 
-		@booking = Booking.find( parms[:id] )
+		@booking = Booking.find( params[:id] )
 
 		if @booking.update
 			self.index
@@ -70,6 +97,6 @@ class BookingsController < ApplicationController
 	private
 
 		def booking_params
-			params.require(:booking).permit( :check_in, :check_out, :adults, :children, :customer_id, :room_ids => [], :room_type_ids => [] )
+			params.require(:booking).permit( :check_in, :check_out, :adults, :children, :customer_id,:room_ids => [], :room_type_ids => [] )
 		end
 end

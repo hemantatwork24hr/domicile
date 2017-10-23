@@ -11,7 +11,6 @@ class RoomType
   validates :name, presence: true, length: { in: 5..10}, uniqueness: true
   validates :price, presence: true, numericality: { allow_nil: false}
   validates :number_of_beds, presence: true, numericality:{ only_integer: true, allow_nil: false}
- # validates :ac, inclusion:{ in: %w( 0,1 ) }
   validates :description, presence: true
 
   has_many :rooms, dependent: :destroy

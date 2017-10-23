@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   end 
   resources :room_types
   resources :bookings
+  resources :billings
 
   get 'welcome/index'
 

@@ -10,5 +10,5 @@ class Customer
 
   has_many :bookings
   has_many :rooms
-  has_many :room_types
+
 end

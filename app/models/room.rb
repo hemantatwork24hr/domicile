@@ -12,6 +12,7 @@ class Room
   validates :room_floor, numericality: { only_integer: true, allow_nil: false }
 
   belongs_to :room_type
+  has_many   :bookings
 
-  has_many  :customers
+ # has_many :customers, :through => :bookings
 end
