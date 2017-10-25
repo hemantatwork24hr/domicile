@@ -7,7 +7,7 @@ class BillingsController < ApplicationController
 	def edit
 
 		@booking = Booking.find( params[:id] )
-
+		puts @booking
 		respond_to do |format|
 			format.html
 			format.js	

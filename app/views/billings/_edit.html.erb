@@ -1,10 +1,63 @@
-<div>
+<div class="well">
   <h1>Billing details</h1>
-  <div>
-    Customer Name
-  </div>
-  <div>
-    Hemant gajbe
-  </div>
-  
+  	<div class="row">
+		<div class="col-lg-6">Billing Date time</div>
+		<div class="col-lg-6">10/10/2002</div>
+	</div>
+  	<div class="row">
+  		<div class="col-lg-6">Customer name</div>
+  		<div class="col-lg-6">Hemant Gajbe</div>
+	</div>
+
+	<div class="row">
+		<div class="col-lg-6">Check in date time</div>
+		<div class="col-lg-6">10/10/2002</div>
+	</div>
+
+	<div class="row">
+		<div class="col-lg-6">Check in date time</div>
+		<div class="col-lg-6">10/10/2002</div>
+	</div>
+
+	<div class="row">
+		<div class="col-lg-6">Rooms</div>
+		<div class="col-lg-6">5</div>
+	</div>
+
+	<div class="row">
+		<div class="col-lg-6">Room cost</div>
+		<div class="col-lg-6">5</div>
+	</div>
+
+	<div class="row">
+		<div class="col-lg-6">Food charge</div>
+		<div class="col-lg-6">5</div>
+	</div>
+
+	<div class="row">
+		<div class="col-lg-6">Miscellneous charge</div>
+		<div class="col-lg-6">5</div>
+	</div>
+
+	<div class="row">
+		<div class="col-lg-6">Tax</div>
+		<div class="col-lg-6">5</div>
+	</div>
+
+	<div class="row">
+		<div class="col-lg-6">Total amount to be paid</div>
+		<div class="col-lg-6">5</div>
+	</div>
+
+	<div class="row">
+		<div class="col-lg-4">
+			<%= link_to 'Back', bookings_path, :class => 'btn btn-danger left', remote: true %>	
+		</div>
+		<div class="col-lg-4">
+			<%= link_to 'Save', bookings_path, :class => 'btn btn-success left', remote: true %>	
+  		<div class="col-lg-4">
+  			<%= link_to 'Print', bookings_path, :class => 'btn btn-primary left', remote: true %>	
+  		</div>
+	</div>
+  	
 </div>
