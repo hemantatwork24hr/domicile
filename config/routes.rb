@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :rooms do
       collection do
         get  :search
-        post  :new_search
+        post :new_search
         get  :show_search
         get  :search_by_room_type_id
       end
