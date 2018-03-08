@@ -1,63 +1,70 @@
 <% @booking_details.each do |booking_detail|%>
 	<div class="well">
-	  <h1>Billing details</h1>
+	  <h3 class="text-center">Billing details</h3>
+	  <br>
 	  	<div class="row">
-			<div class="col-lg-6">Billing Date time</div>
-			<div class="col-lg-6">10/10/2002</div>
+			<div class="col-sm-6 text-center">Billing Date time</div>
+			<div class="col-sm-6"><%=@current_date %></div>
 		</div>
+		<br>
 	  	<div class="row">
-	  		<div class="col-lg-6">Customer name</div>
-	  		<div class="col-lg-6"><%=booking_detail['userinfo'] %></div>
+	  		<div class="col-sm-6  text-center">Customer info</div>
+	  		<div class="col-sm-6">
+		  		<% booking_detail['userinfo'].each do |customer| %>
+		  			<p>Name: <%=customer['name'] %></p>
+		  			<p>Contact no:<%=customer['phone'] %></p>
+		  			<p>Adhar id: <%=customer['adhaar_id'] %></p>
+		  		<% end %>		
+	  		</div>
 		</div>
-
+		<br>
 		<div class="row">
-			<div class="col-lg-6">Check in date time</div>
-			<div class="col-lg-6"><%=booking_detail['check_in'] %></div>
+			<div class="col-sm-6 text-center">Check in date time</div>
+			<div class="col-sm-6"><%=booking_detail['check_in'].strftime("%d-%B-%Y %H:%M %p") %></div>
 		</div>
-
+		<br>
 		<div class="row">
-			<div class="col-lg-6">Check in date time</div>
-			<div class="col-lg-6"><%=booking_detail['check_out'] %></div>
+			<div class="col-sm-6 text-center">Check in date time</div>
+			<div class="col-sm-6"><%=booking_detail['check_out'].strftime("%d-%B-%Y  %H:%M %p")%></div>
 		</div>
-
+		<br>
 		<div class="row">
-			<div class="col-lg-6">Rooms</div>
-			<div class="col-lg-6"><%=booking_detail['count'] %></div>
-		</div>
-
-		<div class="row">
-			<div class="col-lg-6">Room cost</div>
-			<div class="col-lg-6">5</div>
-		</div>
-
-		<div class="row">
-			<div class="col-lg-6">Food charge</div>
-			<div class="col-lg-6">5</div>
-		</div>
-
-		<div class="row">
-			<div class="col-lg-6">Miscellneous charge</div>
-			<div class="col-lg-6">5</div>
-		</div>
-
-		<div class="row">
-			<div class="col-lg-6">Tax</div>
-			<div class="col-lg-6">5</div>
-		</div>
-
-		<div class="row">
-			<div class="col-lg-6">Total amount to be paid</div>
-			<div class="col-lg-6">5</div>
-		</div>
-
-		<div class="row">
-			<div class="col-lg-4">
-				<%= link_to 'Back', bookings_path, :class => 'btn btn-danger left', remote: true %>	
+			<div class="col-sm-6 text-center">Room info</div>
+			<div class="col-sm-6">
+			
+			<table class="table table-bordered">
+			    <thead>
+			      <tr>
+			        <th>Room type</th>
+			        <th>Count</th>
+			        <th>Unit price</th>
+			        <th>Total price</th>
+			      </tr>
+			    </thead>
+			    <tbody>
+				<% @total_cost.each do |key, total| %>
+					 <tr>
+	        			<td><%=total['name'] %></td>
+	        			<td><%=total['count'] %></td>
+	        			<td><%=total['unit_cost'] %></td>
+	        			<td><%=total['total_cost'] %></td>
+	      			 </tr>
+				<% end %>
+				</tbody>
+			</table>
 			</div>
-			<div class="col-lg-4">
-				<%= link_to 'Save', bookings_path, :class => 'btn btn-success left', remote: true %>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-sm-6 text-center">Total amount to be paid</div>
+			<div class="col-sm-6"><%=@amount_to_be_paid %></div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-sm-6 text-center">
+				<%= link_to 'Back', bookings_path, :class => 'btn btn-danger left', remote: true %>	
 			</div>	
-	  		<div class="col-lg-4">
+	  		<div class="col-sm-6 text-center">
 	  			<%= link_to 'Print', bookings_path, :class => 'btn btn-primary left', remote: true %>	
 	  		</div>
 		</div>

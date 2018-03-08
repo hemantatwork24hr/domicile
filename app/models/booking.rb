@@ -9,7 +9,7 @@ class Booking
   field :room_ids, type: Array, default: []
   field :room_type_ids, type: Array, default: []
   field :customer_id, type: Integer
-  field :count, type: String
+  field :count, type: Hash, default: {}
 
   validates :check_in, presence: true
   validates :check_out, presence: true

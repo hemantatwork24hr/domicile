@@ -37,7 +37,7 @@ class BookingsController < ApplicationController
 		end
 
 		@relations.each do |key,values|
-			@room_counts[key] = values.count
+			@room_counts[key.to_s] = values.count
 		end
 
 		@booking.count = @room_counts
