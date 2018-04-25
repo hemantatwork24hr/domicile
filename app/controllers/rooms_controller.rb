@@ -47,6 +47,7 @@ class RoomsController < ApplicationController
 		if @room.save
 			self.index
 		else
+			# binding.pry
 			respond_to do |format|
 				format.html { render partial: 'new' }
 				format.js

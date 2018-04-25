@@ -1,13 +1,13 @@
 <div class="well width60 center">
 	<%= form_for @room, :html =>{:id=>"create_room",:multipart => true,:remote=>true} do |f| %>
 		<% if @room.errors.any? %>
-			<div id="error_explanation">
+			<div id="error_explanation" class="center">
 				<h2>
 				<%= pluralize(@room.errors.count, "error")%>prohibited this room from being saved:
 				</h2>
 				<ul>
-					<% @room.errors.full_messages.each do |msg| %>
-						<li><%=msg %></li>
+					<% @room.errors.full_messages.each do |key, msg| %>
+						<li><%=msg %> <%=key %></li>
 					<% end %>
 				</ul>
 			</div>
