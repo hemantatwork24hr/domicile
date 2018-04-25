@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  get 'sessions/new'
+
   resources :customers
   resources :rooms do
       collection do
@@ -16,6 +18,12 @@ Rails.application.routes.draw do
 
   get 'welcome/index'
 
-  root 'welcome#index'
+  # root 'welcome#index'
+  root 'sessions#new'
+  
+  get 'login', to: 'sessions#new'
+  
+  delete 'logout', to: 'sessions#destroy'
+  post 'login', to: 'sessions#create'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

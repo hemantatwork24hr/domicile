@@ -82,3 +82,10 @@ div.actions {
 label {
   display: block;
 }
+
+.login-container {
+  background-image: url('hotel.jpeg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  height: 100%;
+}

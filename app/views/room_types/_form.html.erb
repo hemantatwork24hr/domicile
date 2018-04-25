@@ -1,62 +1,64 @@
-<%= form_for @roomType, html:{:id => "create_room_type", :multipart => true, :remote => true } do |f| %>
-	<% if @roomType.errors.any? %>
-		<%= pluralize( @roomType.errors.count, "error" )%>
-	<% end %>
-
-	<ul>
-		<% @roomType.errors.full_messages.each do |msg| %>
-			<li><%=msg %></li>
+<div class="well width60 mx-auto">
+	<%= form_for @roomType, html:{:id => "create_room_type", :multipart => true, :remote => true } do |f| %>
+		<% if @roomType.errors.any? %>
+			<%= pluralize( @roomType.errors.count, "error" )%>
 		<% end %>
-	</ul>
 
-	<div class="container-fluid">
-		<div class="form-group row">
-			<div class="col-sm-4">	
-				<%= f.label :name %>
+		<ul>
+			<% @roomType.errors.full_messages.each do |msg| %>
+				<li><%=msg %></li>
+			<% end %>
+		</ul>
+
+		<div class="container-fluid">
+			<div class="form-group row">
+				<div class="col-sm-4">	
+					<%= f.label :name %>
+				</div>
+				<div class="col-sm-8">
+					<%= f.text_field :name, :class => "form-control" %>
+				</div>
 			</div>
-			<div class="col-sm-8">
-				<%= f.text_field :name, :class => "form-control" %>
+			<div class="form-group row">
+				<div class="col-sm-4">	
+					<%= f.label :price %>
+				</div>
+				<div class="col-sm-8">
+					<%= f.text_field :price, :class => "form-control" %>
+				</div>
+			</div>
+			<div class="form-group row">
+				<div class="col-sm-4">	
+					<%= f.label :number_of_beds %>
+				</div>
+				<div class="col-sm-8">
+					<%= f.text_field :number_of_beds, :class => "form-control" %>
+				</div>
+			</div>
+			<div class="form-group row">
+				<div class="col-sm-4">	
+					<%= f.label :ac %>
+				</div>
+				<div class="col-sm-8">
+					<%= f.radio_button :ac, 'true'%> Yes <%= f.radio_button :ac, 'false'%> No
+				</div>
+			</div>
+			<div class="form-group row">
+				<div class="col-sm-4">
+					<label for="description"><%= f.label :description %></label>
+				</div>
+				<div class="col-sm-8">
+					<%= f.text_field :description, :class => "form-control" %>
+				</div>
+			</div>
+			<div class="form-group row">
+				<div class="col-sm-6">
+					<%= link_to 'Back', room_types_path , :class => "btn btn-danger left", :remote => true%>
+				</div>
+				<div class="col-sm-6">
+					<%= f.submit :class => "btn btn-info right" %>
+				</div>
 			</div>
 		</div>
-		<div class="form-group row">
-			<div class="col-sm-4">	
-				<%= f.label :price %>
-			</div>
-			<div class="col-sm-8">
-				<%= f.text_field :price, :class => "form-control" %>
-			</div>
-		</div>
-		<div class="form-group row">
-			<div class="col-sm-4">	
-				<%= f.label :number_of_beds %>
-			</div>
-			<div class="col-sm-8">
-				<%= f.text_field :number_of_beds, :class => "form-control" %>
-			</div>
-		</div>
-		<div class="form-group row">
-			<div class="col-sm-4">	
-				<%= f.label :ac %>
-			</div>
-			<div class="col-sm-8">
-				<%= f.radio_button :ac, 'true'%> Yes <%= f.radio_button :ac, 'false'%> No
-			</div>
-		</div>
-		<div class="form-group row">
-			<div class="col-sm-4">
-				<label for="description"><%= f.label :description %></label>
-			</div>
-			<div class="col-sm-8">
-				<%= f.text_field :description, :class => "form-control" %>
-			</div>
-		</div>
-		<div class="form-group row">
-			<div class="col-sm-6">
-				<%= link_to 'Back', room_types_path , :class => "btn btn-danger left", :remote => true%>
-			</div>
-			<div class="col-sm-12">
-				<%= f.submit :class => "btn btn-info right" %>
-			</div>
-		</div>
-	</div>
-<% end %>
+	<% end %>
+</div>

@@ -2,8 +2,8 @@
   <div class="col-sm-9">
     <div class="well">
     <div class="row">
-      <div class="col-sm-10 bottom20"><h3>Listing customers</h3></div>
-      <div class="col-sm-2"><%= link_to "Create customer", new_customer_path, remote: true, id:'list_rooms', 
+      <div class="col-sm-9 bottom20"><h3>Listing customers</h3></div>
+      <div class="col-sm-3"><%= link_to "Create customer", new_customer_path, remote: true, id:'list_rooms', 
       class:'btn btn-success btn-md float-right' %>
       </div>
     </div>
@@ -13,23 +13,31 @@
           <th>Phone</th>
           <th>Email</th>
           <th>Adhaar</th>
-          <th colspan="3">Actions</th>
+          <th colspan="3" class="text-center">Action</th>
         </tr>
-        <% @customers.each do |customer| %>
-          <tr>
-            <td><%= customer.name %></td>
-            <td><%= customer.phone %></td>
-            <td><%= customer.email %></td>
-            <td><%= customer.adhaar_id %></td>
-            <td>
-              <%= link_to 'Show', customer_path( customer ), :class => "glyphicon glyphicon-info-sign", :data => {:toggle => 'modal', :target =>"#myModal"}, :remote => true %></td>
-            <td>
-              <%= link_to 'Edit', edit_customer_path(customer) , :class => "glyphicon glyphicon-pencil", remote:true %></td>
-            <td>
-              <%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' },
-            remote:true %></td>
-          </tr>
-        <% end %>
+        <% if true == @customers.any? %>
+          <% @customers.each do |customer| %>
+            <tr>
+              <td><%= customer.name %></td>
+              <td><%= customer.phone %></td>
+              <td><%= customer.email %></td>
+              <td><%= customer.adhaar_id %></td>
+              <td>
+                <%= link_to 'Show', customer_path( customer ), :class => "glyphicon glyphicon-info-sign", :data => {:toggle => 'modal', :target =>"#myModal"}, :remote => true %></td>
+              <td>
+                <%= link_to 'Edit', edit_customer_path(customer) , :class => "glyphicon glyphicon-pencil", remote:true %></td>
+              <td>
+                <%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' },
+              remote:true %></td>
+            </tr>
+          <% end %>
+        <% else %>
+            <tr>
+              <td colspan="7" class="text-center bg-info">
+                <b>No record found</b>
+              </td>
+            </tr>
+        <% end%>
     </table>
     </div>
     </div>

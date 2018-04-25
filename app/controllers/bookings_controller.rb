@@ -1,5 +1,7 @@
 class BookingsController < ApplicationController
 
+	before_action :must_login
+
 	def index
 
 		@bookings 	= Booking.all

@@ -3,9 +3,42 @@
 }
 
 .width10{
-	width: 10%
+	width: 10%;
+}
+
+.width50{
+	width: 50%;
+}
+
+.width60{
+	width: 60%;
 }
 
 .bottom20 {
 	bottom: 20px;
+}
+
+// align div center
+.center {
+    margin: auto;
+}
+
+.login-container {
+   background-image: url( '/home/hemant/workspace/domicile/app/assets/images/hotel.jpg' );
+}
+
+.navbar-inverse .navbar-nav > li > a {
+	color: #FFFFFF !important;
+	font-size: 14px !important;
+}
+
+.footer{
+	background-color: #428bca;
+	font-size: 14px !important;
+}
+
+#result_div {
+	height: 100%;
+	margin-top: -20px;
+	background-color: #a7eafd;
 }

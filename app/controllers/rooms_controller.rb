@@ -1,5 +1,8 @@
 class RoomsController < ApplicationController
 	
+	before_action :must_login
+
+
 	def index
 		@rooms 		= Room.all
 		@roomTypes 	= RoomType.all
